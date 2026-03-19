@@ -655,6 +655,44 @@ local IAS = "IAS indicator"
 MiG_29A:defineMultiUnitFloat("IAS_INDICATOR_POINTER", 8, 821, { 0, 1 }, IAS, "IAS Pointer")
 MiG_29A:defineMultiUnitFloatManualRange("IAS_INDICATOR_WINDOW", 5, 820, { 1, 0 }, { 0, 1 }, IAS, "IAS Mach Number")
 
+-- UV-30-2 Barometric Altimeter - Metric Cockpit
+local UV_30_2_METRIC = "UV-30-2 Barometric Altimeter - Metric Cockpit"
+
+MiG_29A:definePotentiometer("UV_30_2_METRIC_SETTING_KNOB", devices.BAROMETRIC_ALTIMETER, 3001, 272, { 0, 1 }, UV_30_2_METRIC, "Setting Knob")
+MiG_29A:defineFloat("UV_30_2_METRIC_METER_POINTER", 10, { 0, 1 }, UV_30_2_METRIC, "Meter Pointer")
+MiG_29A:defineFloat("UV_30_2_METRIC_KILOMETER_POINTER", 11, { 0, 1 }, UV_30_2_METRIC, "Kilometer Pointer")
+MiG_29A:defineFloat("UV_30_2_METRIC_ALT_TEN_THOUSANDS", 461, { 0, 1 }, UV_30_2_METRIC, "Altitude Counter (Tens of Thousands)")
+MiG_29A:defineFloat("UV_30_2_METRIC_ALT_THOUSANDS", 460, { 0, 1 }, UV_30_2_METRIC, "Altitude Counter (Thousands)")
+MiG_29A:defineString("UV_30_2_METRIC_ALT_COUNTER", function(dev0)
+	return string.format("%d%d%", indicator_argument_display(dev0, 461, 10), indicator_argument_display(dev0, 460, 10))
+end, 2, UV_30_2_METRIC, "Altitude Counter")
+MiG_29A:defineFloat("UV_30_2_METRIC_PRE_HUNDREDS", 462, { 0, 1 }, UV_30_2_METRIC, "Pressure Meter (Hundreds)")
+MiG_29A:defineFloat("UV_30_2_METRIC_PRE_TENS", 463, { 0, 1 }, UV_30_2_METRIC, "Pressure Meter (Tens)")
+MiG_29A:defineFloat("UV_30_2_METRIC_PRE_ONES", 464, { 0, 1 }, UV_30_2_METRIC, "Pressure Meter (Ones)")
+MiG_29A:defineString("UV_30_2_METRIC_PRE_COUNTER", function(dev0)
+	return string.format("%d%d%d%", indicator_argument_display(dev0, 462, 10), indicator_argument_display(dev0, 463, 10), indicator_argument_display(dev0, 464, 10))
+end, 3, UV_30_2_METRIC, "Pressure Meter")
+
+-- UV-30-2 Barometric Altimeter - Imperial Cockpit
+local UV_30_2_IMP = "UV-30-2 Barometric Altimeter - Imperial Cockpit"
+
+MiG_29A:definePotentiometer("UV_30_2_IMP_SETTING_KNOB", devices.BAROMETRIC_ALTIMETER, 3001, 272, { 0, 1 }, UV_30_2_IMP, "Setting Knob")
+MiG_29A:defineFloat("UV_30_2_IMP_FEET_POINTER", 822, { 0, 1 }, UV_30_2_IMP, "Feet Pointer")
+MiG_29A:defineFloat("UV_30_2_IMP_ALT_THOUSANDS", 830, { 0, 1 }, UV_30_2_IMP, "Altitude Counter (Thousands)")
+MiG_29A:defineFloat("UV_30_2_IMP_ALT_HUNDREDS", 831, { 0, 1 }, UV_30_2_IMP, "Altitude Counter (Hundreds)")
+MiG_29A:defineFloat("UV_30_2_IMP_ALT_TENS", 832, { 0, 1 }, UV_30_2_IMP, "Altitude Counter (Tens)")
+MiG_29A:defineFloat("UV_30_2_IMP_ALT_ONES", 833, { 0, 1 }, UV_30_2_IMP, "Altitude Counter (Ones)")
+MiG_29A:defineString("UV_30_2_IMP_ALT_COUNTER", function(dev0)
+	return string.format("%d%d%d%d", indicator_argument_display(dev0, 830, 10), indicator_argument_display(dev0, 831, 10), indicator_argument_display(dev0, 832, 10), indicator_argument_display(dev0, 833, 10))
+end, 4, UV_30_2_IMP, "Altitude Counter")
+MiG_29A:defineFloat("UV_30_2_IMP_PRE_THOUSANDS", 834, { 0, 1 }, UV_30_2_IMP, "Pressure Meter (Thousands)")
+MiG_29A:defineFloat("UV_30_2_IMP_PRE_HUNDREDS", 835, { 0, 1 }, UV_30_2_IMP, "Pressure Meter (Hundreds)")
+MiG_29A:defineFloat("UV_30_2_IMP_PRE_TENS", 836, { 0, 1 }, UV_30_2_IMP, "Pressure Meter (Tens)")
+MiG_29A:defineFloat("UV_30_2_IMP_PRE_ONES", 837, { 0, 1 }, UV_30_2_IMP, "Pressure Meter (Ones)")
+MiG_29A:defineString("UV_30_2_IMP_PRE_METER", function(dev0)
+	return string.format("%d%d%d%d", indicator_argument_display(dev0, 834, 10), indicator_argument_display(dev0, 835, 10), indicator_argument_display(dev0, 836, 10), indicator_argument_display(dev0, 837, 10))
+end, 4, UV_30_2_IMP, "Pressure Meter")
+
 -- IP-52-03 Flaps / Landing gear indicator
 local IP_52_03 = "IP-52-03 Control Surfaces / Landing Gear Indicators"
 
@@ -1243,8 +1281,6 @@ local VIWAS = "Voice Information and Warning System (VIWAS)"
 
 MiG_29A:definePushButton("VIWAS_REPEAT_BUTTON", devices.VIWAS, 3002, 141, VIWAS, "Repeat Voice Warning Button")
 MiG_29A:definePushButton("VIWAS_CHECK_BUTTON", devices.VIWAS, 3001, 142, VIWAS, "Check Voice Warning Button")
-
--- Altimeter
 
 -- Pedals
 
