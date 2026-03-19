@@ -1246,6 +1246,15 @@ MiG_29A:definePushButton("VIWAS_CHECK_BUTTON", devices.VIWAS, 3001, 142, VIWAS, 
 
 -- Altimeter
 
+-- ADF control panel
+local ADF = "ADF Control Panel"
+
+MiG_29A:defineMultipositionSwitch("ADF_CHANNEL_SWITCH", devices.ARK, 3001, 144, 5, 0.1, ADF, "Channel Select Switch", { positions = { "1", "2", "3", "4", "P" } })
+MiG_29A:defineToggleSwitch("ADF_SIGNAL_SWITCH", devices.ARK, 3002, 145, ADF, "Signal Switch", { positions = { "CW", "VOICE" } })
+MiG_29A:defineToggleSwitch("ADF_ANTENNA_SWITCH", devices.ARK, 3003, 146, ADF, "Antenna Switch", { positions = { "ANT", "COMP" } })
+MiG_29A:definePotentiometer("ADF_VOLUME_KNOB", devices.ARK, 3004, 147, { 0, 1 }, ADF, "Volume Knob")
+MiG_29A:definePushButton("ADF_LOOP_BUTTON", devices.ARK, 3005, 179, ADF, "Loop Button")
+
 -- Pedals
 
 -- Control & Test panel
@@ -1265,8 +1274,6 @@ MiG_29A:definePushButton("VIWAS_CHECK_BUTTON", devices.VIWAS, 3001, 142, VIWAS, 
 -- Refueling panel
 
 -- Mirrors
-
--- ADF control panel
 
 -- Engine emergency panel
 
